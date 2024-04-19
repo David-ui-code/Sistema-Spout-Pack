@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Monitor</title>
+</head>
+<body>
+    <h1>Water Monitor</h1>
+    <p>Current Reading: <span id="currentReading">Waiting for data...</span> mA</p>
+
+    <script>
+        // WebSocket connection
+        const socket = new WebSocket('ws://192.168.0.106:80'); // Substitua "arduino_ip_address" e "port" pelo endereço IP e porta do Arduino
+        // Event listener for when the WebSocket connection is established
+        socket.addEventListener('open', function (event) {
+            console.log('Connected to Arduino');
+        });
+
+        // Event listener for when the WebSocket receives a message
+        socket.addEventListener('message', function (event) {
+            // Update UI with the received data
+            document.getElementById('currentReading').textContent = event.data + ' mA';
+        });
+
+        // Event listener for when the WebSocket connection is closed
+        socket.addEventListener('close', function (event) {
+            console.log('Disconnected from Arduino');
+        });
+    </script>
+</body>
+</html>
