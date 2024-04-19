@@ -8,7 +8,7 @@
             "targetArchitecture": "arm",
             "cwd": "${workspaceRoot}",
             "executable": "${workspaceRoot}/arduino.cpp",
-            "miDebuggerPath": "/path/to/gdb",
+            "miDebuggerPath": "/arduino.cpp",
             "miDebuggerArgs": "--interpreter=mi2",
             "setupCommands": [
                 {
